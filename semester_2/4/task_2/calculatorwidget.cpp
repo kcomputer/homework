@@ -22,8 +22,10 @@ CalculatorWidget::CalculatorWidget(QWidget *parent) :
             this,SLOT(sender()));
     connect(ui->comboBox, SIGNAL(currentIndexChanged(const QString&)),
             this,SLOT(sender()));
-    connect(this, SIGNAL(value(QString)),
-            ui->lineEdit, SLOT(setText(QString)));
+    ui->lineEdit->setText("0");
+    m_left = 0;
+    m_right = 0;
+    m_oper = '-';
 }
 
 CalculatorWidget::~CalculatorWidget()
@@ -53,11 +55,11 @@ void CalculatorWidget::sender()
     {
         int temp = Calculator::calculate(m_left, m_oper, m_right);
         QString text = QString::number(temp);
-        emit value(text);
+        ui->lineEdit->setText(text);
     }
     else
     {
-        emit value("0");
+        ui->lineEdit->setText("0");
     }
 }
 
