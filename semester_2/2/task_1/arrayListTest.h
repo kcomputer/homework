@@ -5,6 +5,10 @@
 #include <arrayList.h>
 #include "arraylist.h"
 
+
+//! Testing array list.
+
+
 class ArrayListTest : public QObject
 {
     Q_OBJECT

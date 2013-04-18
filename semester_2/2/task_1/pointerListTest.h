@@ -4,6 +4,10 @@
 #include <QObject>
 #include <pointerList.h>
 
+
+//! Testing pointer list.
+
+
 class PointerListTest : public QObject
 {
     Q_OBJECT

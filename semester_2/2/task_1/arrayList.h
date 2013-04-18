@@ -1,7 +1,7 @@
 #pragma once
 #include "list.h"
 
-
+//! List on array.
 
 class ArrayList : public List
 {

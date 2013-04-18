@@ -1,6 +1,8 @@
 #pragma once
 #include "list.h"
 
+//! List on pointers.
+
 class PointerList : public List
 {
 public:
