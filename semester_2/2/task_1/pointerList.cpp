@@ -26,15 +26,15 @@ void PointerList::add(int val)
 
 void PointerList::remove(int val)
 {
-    PointerList* temp = this;
+    PointerList* temp = next;
     while(temp->next && temp->next->value != val)
         temp = temp->next;
     if (temp->next && temp->next->value == val)
     {
         PointerList* tmp = temp->next;
         temp->next = temp->next->next;
-        tmp->next = 0;
-        delete temp; {delete next;}
+        tmp->next = NULL;
+        delete tmp;
     }
 }
 
