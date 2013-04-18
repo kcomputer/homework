@@ -1,6 +1,8 @@
 #pragma once
 #include "stackInt.h"
 
+//! Stack on array.
+
 
 class ArrayStackInt : public StackInt
 {

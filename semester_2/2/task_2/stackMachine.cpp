@@ -3,12 +3,19 @@
 #include "arrayStackInt.h"
 #include "pointerStackInt.h"
 
-int stackMachine(string stringExpression)
+int stackMachine(string stringExpression, int kindaStack)
 {
-	char symbol = '$';
-	StackInt *expression = new ArrayStackInt();
-	int a = 0;
-	int b = 0;
+    StackInt *expression;
+    if (kindaStack !=  1)
+    {
+        expression = new ArrayStackInt();
+    }
+    else
+    {
+        expression = new PointerStackInt();
+    }
+    int a = 0;
+    int b = 0;
 	int i = 0;
 	while (i < stringExpression.length())
 	{

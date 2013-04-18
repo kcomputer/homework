@@ -1,6 +1,8 @@
 #pragma once
 #include "stackInt.h"
 
+//! Stack on pointers.
+
 class PointerStackInt : public StackInt
 {
 public:

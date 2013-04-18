@@ -24,7 +24,6 @@ void ArrayStackInt::push(int val)
 int ArrayStackInt::pop()
 {
 	int temp = buff[length()-1];
-	int i = 0;
 	lengthi--;
 	return temp;
 }
