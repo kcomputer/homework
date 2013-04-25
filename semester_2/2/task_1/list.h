@@ -10,14 +10,14 @@ public:
 
     //! Add integer to list.
     /*!
-     /param val is an integer argument.
+     \param val is an integer argument.
     */
     virtual void add(int val) = 0;
 
 
     //! Remove integer from list.
     /*!
-     /param val is an integer argument.
+     \param val is an integer argument.
     */
     virtual void remove(int val) = 0;
 
@@ -26,7 +26,7 @@ public:
     /*!
       Check if an element is in list.
 
-     /param val is an integer argument
+     \param val is an integer argument
     */
     virtual bool isIn(int val) = 0;
 

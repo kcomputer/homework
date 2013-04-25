@@ -3,7 +3,6 @@
 #include <QTest>
 #include <QObject>
 #include <arrayList.h>
-#include "arraylist.h"
 
 
 //! Testing array list.
