@@ -4,15 +4,19 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui\
+            testlib\
 
 TARGET = calculator
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        calculator.cpp
+        calculator.cpp \
+    calculateMachine.cpp
 
-HEADERS  += calculator.h
+HEADERS  += calculator.h \
+    calculateMachine.h \
+    calculatorTest.h
 
 FORMS    += calculator.ui

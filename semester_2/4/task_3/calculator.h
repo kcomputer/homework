@@ -9,6 +9,7 @@
 #include <QLCDNumber>
 #include <QPushButton>
 #include <QSignalMapper>
+#include "calculateMachine.h"
 
 namespace Ui {
 class Calculator;
@@ -22,7 +23,7 @@ public:
     explicit Calculator(QWidget *parent = 0);
     ~Calculator();
     QPushButton* createButton(const QString& str);
-    void calculate();
+   // void calculate();
 public slots:
     void slotButtonClicked(const QString &str);
     

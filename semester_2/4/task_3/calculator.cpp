@@ -45,33 +45,10 @@ QPushButton* Calculator::createButton(const QString& str)
 
 
 
-void Calculator::calculate()
-{
-    double  dOperand2    = m_stk.pop().toDouble();
-    QString strOperation = m_stk.pop();
-    double  dOperand1    = m_stk.pop().toDouble();
-    double  dResult      = 0;
-
-    if (strOperation == "+") {
-        dResult = dOperand1 + dOperand2;
-    }
-    if (strOperation == "-") {
-        dResult = dOperand1 - dOperand2;
-    }
-    if (strOperation == "/") {
-        dResult = dOperand1 / dOperand2;
-    }
-    if (strOperation == "*") {
-        dResult = dOperand1 * dOperand2;
-    }
-    m_plcd->display(dResult);
-}
-
-
-
-void Calculator::slotButtonClicked(const QString &str)
+void Calculator::slotButtonClicked(const QString& str)
 {
     if (str.contains(QRegExp("[0-9]"))) {
+
         m_strDisplay += str;
         m_plcd->display(m_strDisplay.toDouble());
     }
@@ -80,21 +57,26 @@ void Calculator::slotButtonClicked(const QString &str)
         m_plcd->display(m_strDisplay);
     }
     else {
-        if (m_stk.count() >= 2) {
-            m_stk.push(QString().setNum(m_plcd->value()));
-            calculate();
+        if (m_stk.count() == 2)
+        {
+            double dOperand2 = m_plcd->value();
+            QString strOperation = m_stk.pop();
+            double  dOperand1    = m_stk.pop().toDouble();
+            m_plcd->display(calculate(dOperand1, strOperation, dOperand2));
             m_stk.clear();
             m_stk.push(QString().setNum(m_plcd->value()));
-            if (str != "=") {
+            if (str != "=")
+            {
                 m_stk.push(str);
             }
+            m_strDisplay.clear();
         }
-        else {
+        else
+        {
             m_stk.push(QString().setNum(m_plcd->value()));
             m_stk.push(str);
 
-            m_strDisplay = "";
-            m_plcd->display("0");
+            m_strDisplay.clear();
         }
     }
 }
