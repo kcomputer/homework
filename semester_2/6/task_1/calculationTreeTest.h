@@ -35,7 +35,7 @@ private slots:
         streambuf* buff = cout.rdbuf();
         cout.rdbuf(bt.rdbuf());
         mTree->print();
-        QVERIFY(bt.str().compare("(*(+11)2)"));
+        QVERIFY(!bt.str().compare("(*(+11)2)"));
         cout.clear();
         cout.rdbuf(buff);
     }
