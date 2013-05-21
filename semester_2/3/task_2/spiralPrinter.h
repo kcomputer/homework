@@ -1,11 +1,14 @@
 #ifndef SPIRALPRINTER_H
 #define SPIRALPRINTER_H
+#include "abstractSpiralPrinter.h"
 
 
-class SpiralPrinter
+class SpiralPrinter : public AbstractSpiralPrinter
 {
 public:
-    virtual void print(int ** array, int size) = 0;
+    void printer(int ** array, int size);
+    void print(int element);
+
 };
 
 #endif // SPIRALPRINTER_H

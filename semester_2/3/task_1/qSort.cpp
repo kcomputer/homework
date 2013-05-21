@@ -3,9 +3,6 @@
 
 
 
-
-
-
 void qSortHelper (int *array, int low, int high)
 {
     int i = low;
@@ -32,7 +29,7 @@ void qSortHelper (int *array, int low, int high)
 
 }
 
-void QSort :: makeSort(int *array, int length)
+void QSort::makeSort(int *array, int length)
 {
     qSortHelper(array, 0, length - 1);
 }

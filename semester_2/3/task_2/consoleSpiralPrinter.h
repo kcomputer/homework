@@ -3,10 +3,11 @@
 #include "spiralPrinter.h"
 
 
+
 class ConsoleSpiralPrinter : public SpiralPrinter
 {
 public:
-    void print(int ** array, int size);
+    void print(int element);
 };
 
 
