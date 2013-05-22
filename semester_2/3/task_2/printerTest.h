@@ -8,6 +8,9 @@
 #include "fileSpiralPrinter.h"
 #include "consoleSpiralPrinter.h"
 #include <sstream>
+#include <iostream>
+
+using namespace std;
 
 
 //! Testing sorter.
@@ -22,24 +25,25 @@ public:
 private slots:
     void init()
     {
-        mArray = new int*[4];
-        for (int i = 0; i < 4; ++i)
+        mArray = new int*[3];
+        for (int i = 0; i < 3; ++i)
         {
-             mArray[i] = new int[4];
+             mArray[i] = new int[3];
         }
-        for (int i = 1; i < 4; i++)
+        int temp = 1;
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 1; j < 4; ++j)
+            for (int j = 0; j < 3; ++j)
             {
-                mArray[i][j] = i + j ;
+                mArray[i][j] = temp ;
+                ++temp;
             }
         }
     }
     void cleanup()
     {
-
         delete mPrinter;
-        for (int i = 0; i < 4; ++i)
+        for (int i = 0; i < 3; ++i)
         {
             delete[] mArray[i];
         }
@@ -54,13 +58,11 @@ private slots:
 
         mPrinter = new ConsoleSpiralPrinter();
         mPrinter->printer(mArray, 3);
-        QVERIFY(n == 1);
 
-        QVERIFY(!nOut.str().compare("5 4 7 8 9 6 3 2 1"));
+        QVERIFY(!nOut.str().compare("5 4 7 8 9 6 3 2 1 "));
         cout.clear();
         cout.rdbuf(buff);
     }
-
 
 private:
     int n;

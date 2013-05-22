@@ -7,8 +7,7 @@ class SpiralPrinter : public AbstractSpiralPrinter
 {
 public:
     void printer(int ** array, int size);
-    void print(int element);
-
+    virtual void print(int element) = 0;
 };
 
 #endif // SPIRALPRINTER_H
