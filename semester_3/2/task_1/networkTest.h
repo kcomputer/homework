@@ -1,7 +1,7 @@
 #ifndef NETWORKTEST_H
 #define NETWORKTEST_H
 
-#include "RandomNumberGeneratorInterface.h"
+#include "randomNumberGeneratorInterface.h"
 #include <iostream>
 #include <QObject>
 #include "network.h"

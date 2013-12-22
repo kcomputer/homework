@@ -8,7 +8,11 @@
 class Computer
 {
 public:
-    Computer(OS* operatingSystem, bool state, RandomNumberGeneratorInterface *probabilityGenerator): operatingSystem(operatingSystem), isInfectedMV(state), probabilityGenerator(probabilityGenerator) {}
+    Computer(OS* operatingSystem, bool state, RandomNumberGeneratorInterface *probabilityGenerator){
+     this->operatingSystem = operatingSystem;
+     this->isInfectedMV = state;
+     this->probabilityGenerator = probabilityGenerator;
+    }
     void virus();
     bool isInfected();
 private:
