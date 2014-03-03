@@ -11,15 +11,15 @@ using namespace std;
 class GraphWithRobots
 {
 public:
-    GraphWithRobots(string *graphFileName);
+    GraphWithRobots(char *graphFileName);
     ~GraphWithRobots();
-    void insertData(string *recievedGraphFileName);
+    void insertData(char *recievedGraphFileName);
     bool calculteProbability();
 
 private:
     void deleteData();
 
-    string *graphFileName;
+    char *graphFileName;
 
     int verticesQuantity;
 

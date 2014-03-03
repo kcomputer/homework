@@ -15,13 +15,13 @@ public:
         explicit GraphWithRobotsTest(QObject *parent = 0) : QObject(parent) {}
 
 private:
-    string *graphFileName;
+    char *graphFileName;
     GraphWithRobots *GraphTest;
 
 private slots:
         void init()
         {
-            *graphFileName = string ("Graph_1.txt");
+            graphFileName ="Graph_1.txt";
             GraphTest = new GraphWithRobots(graphFileName);
         }
 
@@ -32,7 +32,7 @@ private slots:
 
         void secondTest()
         {
-            *graphFileName = string("Graph_2.txt");
+            graphFileName = "Graph_2.txt";
             GraphTest->insertData(graphFileName);
 
             QCOMPARE(GraphTest->calculteProbability(), false);

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-GraphWithRobots::GraphWithRobots(string *graphFileName):graphFileName(graphFileName)
+GraphWithRobots::GraphWithRobots(char *graphFileName):graphFileName(graphFileName)
 {
     verticesQuantity = 0;
 
@@ -27,7 +27,7 @@ void GraphWithRobots::deleteData(){
     delete[] robotsLocation;
 }
 
-void GraphWithRobots::insertData(string *recievedGraphFileName)
+void GraphWithRobots::insertData(char *recievedGraphFileName)
 {
     graphFileName = recievedGraphFileName;
     if (verticesQuantity != 0)
@@ -35,11 +35,14 @@ void GraphWithRobots::insertData(string *recievedGraphFileName)
         this->deleteData();
     }
     ifstream graphFile;
-    graphFile.open(graphFileName->c_str());
+    graphFile.open(graphFileName);
     if (graphFile.is_open())
     {
-        graphFile >> verticesQuantity;
 
+        graphFile >> verticesQuantity;
+        cout << endl;
+        cout << verticesQuantity;
+cout << endl;
         graph = new int*[verticesQuantity];
         for (int i = 0; i < verticesQuantity; i++)
         {
@@ -48,16 +51,19 @@ void GraphWithRobots::insertData(string *recievedGraphFileName)
 
         for (int i = 0; i < verticesQuantity; i++)
         {
-            for (int j = 0; i < verticesQuantity; i++)
+            for (int j = 0; j < verticesQuantity; j++)
             {
                 graphFile >> graph[i][j];
+                cout << graph[i][j] << "   ";
             }
+            cout << endl;
         }
 
         robotsLocation = new int[verticesQuantity];
         for (int i = 0; i < verticesQuantity; i++)
         {
             graphFile >> robotsLocation[i];
+            cout <<  robotsLocation[i] << "     ";
         }
 
 
@@ -71,9 +77,14 @@ void GraphWithRobots::insertData(string *recievedGraphFileName)
         for(int i = 0; i < verticesQuantity; i++){
             for(int j = 0; j < verticesQuantity; j++){
                 newGraph[i][j] = 0;
+                cout<< newGraph[i][j];
             }
+            cout << endl;
         }
-        memset(used, 0, sizeof (used));
+        for (int i = 0; i < verticesQuantity; i++)
+        {
+            used[i] = false;
+        }
 
 
         createANewGraph();
@@ -115,11 +126,19 @@ int GraphWithRobots::dfs(int currentVertex)
 }
 
 void GraphWithRobots::createANewGraph(){
-    for(int u = 1; u <=verticesQuantity; u++)
-        for(int v = u+1; v <= verticesQuantity; v++)
-            for(int mid = 1; mid <= verticesQuantity; mid++)
+    for(int u = 0; u <verticesQuantity; u++)
+        for(int v = u + 1; v < verticesQuantity; v++)
+            for(int mid = 0; mid < verticesQuantity; mid++)
                 if ((mid != u) && (mid != v) && graph[u][mid] && graph[v][mid]){
                     newGraph[u][v]=1;
                     newGraph[v][u]=1;
                 }
+    cout << endl;
+    for(int i = 0; i < verticesQuantity; i++){
+        for(int j = 0; j < verticesQuantity; j++){
+
+            cout<< newGraph[i][j]<< "    ";
+        }
+        cout << endl;
+    }
 }
