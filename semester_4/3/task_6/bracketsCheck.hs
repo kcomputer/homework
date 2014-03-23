@@ -1,22 +1,25 @@
 import Test.QuickCheck
+import Data.Maybe
 
-bracketsCheck :: String -> Bool
+-- | Given an opening bracket, return it's closing counterpart 
+expect c = fromJust $ lookup c $ zip "[{(<" "]})>"
 
-bracketsCheck xs = bracketsCheckHelper xs [0,0,0]
 
-bracketsCheckHelper :: String -> [Integer] -> Bool
+check :: String -> Bool
+check = check' ""
 
-bracketsCheckHelper [] acc = acc == [0,0,0]
-bracketsCheckHelper (x:xs) acc = case x of
-								'(' -> bracketsCheckHelper xs (zipWith (+) [1,0,0] acc)
-								')' -> bracketsCheckHelper xs (zipWith (-) [1,0,0] acc)
-								'{' -> bracketsCheckHelper xs (zipWith (+) [0,1,0] acc)
-								'}' -> bracketsCheckHelper xs (zipWith (-) [0,1,0] acc)
-								'[' -> bracketsCheckHelper xs (zipWith (+) [0,0,1] acc)
-								']' -> bracketsCheckHelper xs (zipWith (-) [0,0,1] acc)
-								otherwise -> bracketsCheckHelper xs acc 
+-- | Checks to see if a String contains only correctly nested brackets.
+check' :: String -> String -> Bool
+check' s []    = null s
 
-bracketsCheckTest = bracketsCheck "()dsds{d}[]s(dd)" == True
-					&& bracketsCheck "((ddw))]" == False
+check' s (c:r)
+    | (not $ elem c "[]()<>{}")     = check' s r
+    | elem c "([{<"                 = check' (expect c:s) r
+    | elem c ")]}>" && (not.null) s = (c == head s) && check' (tail s) r
+    | otherwise                     = False
+
+
+bracketsCheckTest = check "()dsds{d}[]s(dd)" == True
+					&& check "((ddw))]" == False
 
 main = quickCheck bracketsCheckTest
